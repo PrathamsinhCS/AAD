@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting Algorithm Performance</title>
+</head>
+<body>
+    <h1>Sorting Algorithm Performance</h1>
+    
+    <form method="POST">
+        <label for="sizes">Enter the Numbers for Sorting (comma-separated):</label><br>
+        <input type="text" id="sizes" name="sizes" style="width: 400px;" required>
+        <button type="submit">Run Sorting</button>
+    </form>
+
+    {% if error %}
+    <p style="color: red;">{{ error }}</p>
+    {% endif %}
+
+    {% if results %}
+    <h2>Results:</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Size</th>
+                <th>Bubble Sort - Count</th>
+                <th>Bubble Sort - Time (seconds)</th>
+                <th>Insertion Sort - Count</th>
+                <th>Insertion Sort - Time (seconds)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for result in results %}
+            <tr>
+                <td>{{ result.size }}</td>
+                <td>{{ result.bubblecount }}</td>
+                <td>{{ result.bubbletime }}</td>
+                <td>{{ result.insertioncount }}</td>
+                <td>{{ result.insertiontime }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Graphs:</h2>
+    <img src="data:image/png;base64,{{ plot_url }}" alt="Plot">
+    {% endif %}
+</body>
+</html>

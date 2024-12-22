@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coin Change Optimizer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .results {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #eef;
+            border-radius: 6px;
+        }
+
+        .results h2 {
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <h1>Coin Change Optimizer</h1>
+    <div class="form-container">
+        <form action="/compute" method="post">
+            <label for="amount">Enter the Amount (Rs.):</label><br><br>
+            <input type="number" id="amount" name="amount" required>
+            <button type="submit">Compute</button>
+        </form>
+
+        {% if output is not none %}
+            <div class="results">
+                <h2>Output:</h2>
+                <p>Minimum number of coins required: {{ output }}</p>
+                <p>Coins used: {{ coins_used }}</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
