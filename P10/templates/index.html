@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Huffman Encoding System</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+        color: #333;
+    }
+    h1 {
+        color: #d32f2f; /* Changed to red */
+    }
+    form {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px #ccc;
+    }
+    label {
+        margin-bottom: 10px;
+        display: inline-block;
+        color: #666;
+    }
+    input[type="text"] {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    button {
+        background-color: #d32f2f; /* Changed to red */
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+    }
+    button:hover {
+        background-color: #b71c1c; /* Darker red on hover */
+    }
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    li {
+        margin: 5px 0;
+        padding: 5px;
+        background-color: #e9ecef;
+        border-radius: 4px;
+    }
+</style>
+</head>
+<body>
+<h1>Huffman Encoding Interface</h1>
+<form method="POST" action="/process_huffman"> <!-- Ensure this action matches the Flask route -->
+    <label for="text_to_encode">Input text to encode (Example: CAD-BE):</label>
+    <input type="text" id="text_to_encode" name="text_to_encode" required><br><br>
+    <label for="text_to_decode">Input binary to decode (Example: 0011011100011100):</label>
+    <input type="text" id="text_to_decode" name="text_to_decode" required><br><br>
+    <button type="submit">Calculate</button>
+</form>
+{% if encoded_result %}
+<h2>Result of Encoding</h2>
+<p>{{ encoded_result }}</p>
+{% endif %}
+{% if decoded_result %}
+<h2>Result of Decoding</h2>
+<p>{{ decoded_result }}</p>
+{% endif %}
+{% if huffman_mappings %}
+<h2>Huffman Mappings</h2>
+<ul>
+{% for symbol, mapping in huffman_mappings.items() %}
+<li>{{ symbol }}: {{ mapping }}</li>
+{% endfor %}
+</ul>
+{% endif %}
+</body>
+</html>
